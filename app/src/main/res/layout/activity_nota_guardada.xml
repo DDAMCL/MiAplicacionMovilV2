@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginVertical="8dp"
+    android:backgroundTint="@color/black"
+    android:background="@drawable/rounded_corner"
+    tools:context=".NotaGuardadaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/black"
+            android:background="@drawable/rounded_corner"
+            tools:context=".NotaGuardadaActivity">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/note_title_text_view"
+                android:text="hola"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_marginVertical="4dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/note_content_text_view"
+                android:text="hola"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="17sp"
+                android:layout_marginVertical="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/note_timestamp_text_view"
+                android:text="27/09/2023"
+                android:textSize="12sp"
+                android:gravity="right"
+                android:layout_marginVertical="4dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

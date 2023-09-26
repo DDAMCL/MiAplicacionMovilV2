@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MiAplicacionMovil</string>
+
+    <string name="btn_iniciar_pantalla">Iniciar sesión</string>
+    <string name="btn_registrar_pantalla">Registrarse</string>
+
+    <string name="btn_iniciar_sesion">Iniciar Sesión</string>
+
+    <string name="btn_Registrarse_sesion">Registrarse</string>
+
+    <string name="btn_Splash">Registrarse</string>
+
+    <string-array name="countries">
+        <item>Seleccionar País</item>
+        <item>Chile</item>
+        <item>Venezuela</item>
+        <!-- Agrega más países según tus necesidades -->
+    </string-array>
+
+</resources>
+
+
+
+
