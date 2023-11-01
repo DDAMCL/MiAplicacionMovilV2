@@ -129,12 +129,25 @@
             <com.google.android.material.button.MaterialButton
 
                 android:id="@+id/VolverLogin"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
 
                 android:layout_height="60dp"
 
                 android:onClick="irLogin"
                 android:text="Inicio de sesión"
+                app:backgroundTint="@color/black"
+                app:cornerRadius="32dp" />
+
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/Mapa"
+                android:layout_width="match_parent"
+
+                android:layout_height="60dp"
+
+                android:onClick="irMapa"
+                android:text="Mapa"
                 app:backgroundTint="@color/black"
                 app:cornerRadius="32dp" />
 
