@@ -20,6 +20,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 public class Calificanos extends Dialog {
 
+    //Hola
     private float userrate = 0;
     public Calificanos(@NonNull Context context) {
         super(context);
