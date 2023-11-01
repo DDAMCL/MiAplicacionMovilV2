@@ -6,7 +6,7 @@ plugins {
 android {
     namespace  "com.marco.miaplicacionmovil"
     compileSdk  33
-
+ //prueba
     defaultConfig {
         applicationId  "com.marco.miaplicacionmovil"
         minSdk  24
