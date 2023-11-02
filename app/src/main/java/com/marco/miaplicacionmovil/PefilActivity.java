@@ -87,7 +87,7 @@ public class PefilActivity extends AppCompatActivity {
     }
 
     public void irMapa(View view) {
-        Intent i = new Intent(PefilActivity.this, LocationActivity.class);
+        Intent i = new Intent(PefilActivity.this, Splash2Activity.class);
         startActivity(i);
     }
 
