@@ -16,6 +16,8 @@ public class PefilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pefil);
 
+
+
         ImageView imagenFacebook = findViewById(R.id.imagenFacebook);
 
         imagenFacebook.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +82,30 @@ public class PefilActivity extends AppCompatActivity {
         });
     }
 
+    private void UnSegundo(){
+        try{
+            Thread.sleep(1000);
+        }catch (InterruptedException e){}
+    }
+    void Hilos(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=1; i<=10; i++){
+                    UnSegundo();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getBaseContext(), "Mostrando Mapa", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        }).start();
+    }
+
+
     public void irLogin(View view){
         Intent i = new Intent(PefilActivity.this, IniciarSesionActivity.class);
         startActivity(i);
@@ -87,6 +113,7 @@ public class PefilActivity extends AppCompatActivity {
     }
 
     public void irMapa(View view) {
+        Hilos();
         Intent i = new Intent(PefilActivity.this, Splash2Activity.class);
         startActivity(i);
     }
