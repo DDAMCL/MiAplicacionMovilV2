@@ -121,9 +121,7 @@
                 </TableRow>
             </TableLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+
 
             <!-- Redes sociales -->
             <com.google.android.material.button.MaterialButton
@@ -148,6 +146,16 @@
 
                 android:onClick="irMapa"
                 android:text="Mapa"
+                app:backgroundTint="@color/black"
+                app:cornerRadius="32dp" />
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/RotationVector"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:onClick="irRotationVector"
+                android:text="Vector de Rotacion"
                 app:backgroundTint="@color/black"
                 app:cornerRadius="32dp" />
 

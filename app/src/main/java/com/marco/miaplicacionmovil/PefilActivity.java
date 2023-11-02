@@ -118,4 +118,9 @@ public class PefilActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void irRotationVector(View view){
+        Intent i = new Intent(PefilActivity.this, RotationVectorActivity.class);
+        startActivity(i);
+
+    }
 }
