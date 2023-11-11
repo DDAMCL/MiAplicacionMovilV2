@@ -15,8 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.marco.miaplicacionmovil.databinding.ActivityRegistrarseBinding;
 
 public class RegistrarseActivity extends AppCompatActivity {
+
+    ActivityRegistrarseBinding binding;
+    DataBase dataBase;
+
 
 
 
@@ -25,29 +30,10 @@ public class RegistrarseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrarse);
-
-        TextView username =(TextView) findViewById(R.id.correo);
-        TextView password =(TextView) findViewById(R.id.contrasenaC);
-
-        TextView passwordConfirmed =(TextView) findViewById(R.id.contrasenaConfirmacion);
-
-        MaterialButton registrarbtn = (MaterialButton) findViewById(R.id.registrarPantallaBtn);
-
-        registrarbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(username.getText().toString().equals("marcodiazduran2@gmail.com") && password.getText().toString().equals("123456") && passwordConfirmed.getText().toString().equals("123456")){
-                    //correct
-                    Intent myIntent = new Intent(RegistrarseActivity.this, IniciarSesionActivity.class);
-                    startActivity(myIntent);
+        binding = ActivityRegistrarseBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
-                }else
-                    //incorrect
-                    Toast.makeText(RegistrarseActivity.this,"Registro Fallido intentelo de nuevo!!!",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         ImageView imagenFacebook = findViewById(R.id.imagenFacebook);
 
@@ -144,6 +130,46 @@ public class RegistrarseActivity extends AppCompatActivity {
                 // Este método se llama cuando no se selecciona nada, puedes dejarlo vacío
             }
         });
+
+        dataBase = new DataBase(this);
+
+        binding.registrarPantallaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = binding.correo.getText().toString();
+                String password = binding.contrasenaC.getText().toString();
+                String confirmPassword = binding.contrasenaConfirmacion.getText().toString();
+
+                if (email.equals("") || password.equals("") || confirmPassword.equals("")) {
+                    Toast.makeText(RegistrarseActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (password.equals(confirmPassword)){
+                        Boolean checkUserEmail = dataBase.checkEmail(email);
+
+                        if (!checkUserEmail){
+                            Boolean insert = dataBase.insertData(email, password);
+
+                            if (insert){
+                                Toast.makeText(RegistrarseActivity.this, "Registrado", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), IniciarSesionActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(RegistrarseActivity.this, "Registro Fallido", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(RegistrarseActivity.this, "Usuario existente", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(RegistrarseActivity.this, "Contraseña invalida", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+
+
+
 
 
     }

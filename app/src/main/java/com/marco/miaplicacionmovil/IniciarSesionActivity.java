@@ -12,39 +12,57 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.marco.miaplicacionmovil.databinding.ActivityIniciarSesionBinding;
 
 public class IniciarSesionActivity extends AppCompatActivity {
+
+    ActivityIniciarSesionBinding binding;
+    DataBase dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciar_sesion);
+        binding = ActivityIniciarSesionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        dataBase = new DataBase(this);
 
-
-        //-----------------------------
-
-        TextView username =(TextView) findViewById(R.id.correo);
-        TextView password =(TextView) findViewById(R.id.contrasena);
-
-        MaterialButton loginbtn = (MaterialButton) findViewById(R.id.iniciarSesionBtn);
-
-        //admin and admin
-
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        binding.iniciarSesionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(username.getText().toString().equals("marcodiazduran2@gmail.com") && password.getText().toString().equals("123456")){
-                    //correct
-                    Intent myIntent = new Intent(IniciarSesionActivity.this, NotasActivity.class);
-                    startActivity(myIntent);
 
+                String email = binding.correo.getText().toString();
+                String password = binding.contrasena.getText().toString();
 
-                }else
-                    //incorrect
-                    Toast.makeText(IniciarSesionActivity.this,"Inicio Fallido, Intentelo de nuevo!!!",Toast.LENGTH_SHORT).show();
+                if (email.equals("") || password.equals(""))
+                    Toast.makeText(IniciarSesionActivity.this, "All fields are mamndatory", Toast.LENGTH_SHORT).show();
+                else {
+                    Boolean checkCredentials = dataBase.checkEmailPassword(email, password);
+                    
+                    if (checkCredentials == true){
+                        Toast.makeText(IniciarSesionActivity.this, "Iniciando Sesion", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), NotasActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(IniciarSesionActivity.this, "Inicio de Sesion Fallido", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
+
+        binding.iniciarSesionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IniciarSesionActivity.this, NotasActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
 
         ImageView imagenFacebook = findViewById(R.id.imagenFacebook);
 
